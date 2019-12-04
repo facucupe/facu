@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Industria Argentina</title>
+    <link rel="stylesheet" href="estilo.css">
+  </head>
+  <body>
+    <!--Cabecera-->
+    <header>
+
+    </header>
+    <!--Contenido-->
+    <section>
+
+    </section>
+    <script>
+      //Manejo a nivel de DOM las etiquetas header y section
+      var cabecera = document.querySelector('header');
+      var section = document.querySelector('section');
+
+      //Solicitud del archivo JSON
+      //Instancio un objeto de tipo XMLHttpRequest
+      var solicitud = new XMLHttpRequest();
+      /*Con ese objeto le indico que la petición
+      será a través del método POST e indico la
+      url del archivo JSON*/
+      solicitud.open('GET','indarg.json');
+      //Indico el tipo de respuesta esperada
+      solicitud.responseType = 'json';
+      //Envío la solicitud
+      solicitud.send();
+
+      //Espero confirmación de carga de JSON
+      solicitud.onload = function(){
+        /*Una vez cargado lo paso por parámetro a
+        la funcion poblarCabecera() */
+        var hitos = solicitud.response;
+        poblarCabecera(hitos);
+        generarContenido(hitos);
+      }
+
+      //Función para establecer contenido de la cabecera
+      function poblarCabecera(hitos){
+        //Creo una etiqueta de tipo h1
+        var miTitulo = document.createElement('h1');
+        var miSubTitulo = document.createElement('h3');
+        /*Establezco a la etiqueta h1 el valor de la clave
+         titulo del objeto hitos*/
+        miTitulo.textContent = hitos['titulo'];
+        miSubTitulo.textContent = hitos['subtitulo'];
+        //Le inserto la etiqueta h1 a la cabecera(header)
+        cabecera.appendChild(miTitulo);
+        cabecera.appendChild(miSubTitulo);
+      }
+
+      function generarContenido(hitos){
+        for (var i = 0; i < hitos['productos'].length; i++) {
+          var producto = document.createElement('article');
+          var miH4 = document.createElement('h4');
+          var imagen = document.createElement('img');
+          var miPara1 = document.createElement('p');
+          var miPara2 = document.createElement('p');
+        //  var miPara3 = document.createElement('p');
+
+          miH4.textContent = hitos['productos'][i].marca;
+          imagen.src = hitos['productos'][i].urlImagen;
+          imagen.width = "300";
+          miPara1.textContent = hitos['productos'][i].modelo;
+          miPara2.textContent = hitos['productos'][i].tipo;
+      //    miPara3.textContent = hitos['productos'][i].especificaciones;
+
+
+          producto.appendChild(miH4);
+          producto.appendChild(imagen);
+          producto.appendChild(miPara1);
+          producto.appendChild(miPara2);
+          //  producto.appendChild(miPara3);
+
+          section.appendChild(producto);
+        }
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "titulo":"TIPOS DE MOTOS",
+  "subtitulo":"En esta pagina podremos ver los 3 pilares principales de los diferentes tipos de motos.",
+  "productos":[
+    {
+      "marca":"KAWASAKI",
+      "modelo":"KX 250",
+      "tipo":"MOTOCROSS",
+      "urlImagen":"img/kx250.jpg"
+
+    },
+    {
+      "marca":"KYMCO",
+      "modelo":"AK-550",
+      "tipo":"SCOOTER",
+      "urlImagen":"img/kymco.jpg"
+
+    }
+    ,
+    {
+      "marca":"SUZUKI",
+      "modelo":"GSX-R 750",
+      "tipo":"PISTA",
+      "urlImagen":"img/gsxr.jpg"
+    }
+  ]
+}
