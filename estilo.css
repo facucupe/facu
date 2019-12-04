@@ -6,8 +6,8 @@ html {
 }
 
 body {
-  width: 1000px;
-  margin: 30 auto;
+  width: 1280px;
+  margin: 0 auto;
   background-image:url("img/fondo2.jpg");
 
 
@@ -69,4 +69,8 @@ section p {
 
 section ul {
   margin-top: 0;
+}
+img {
+  width: 300px;
+  height: 200px;
 }
